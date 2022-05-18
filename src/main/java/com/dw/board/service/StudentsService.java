@@ -17,10 +17,11 @@ public class StudentsService {
 	@Autowired
 	private StudentsMapper studentsMapper;
 	@Autowired
-	private PasswordEncoder passwordEncoder;
+	private PasswordEncoder passwordEncoder; 
 	
 	//학생 저장
 	public int setStudents(StudentsVO vo) {
+		//학생 비밀번호 암호화 
 		String password = vo.getStudentsPassword();
 		password = passwordEncoder.encode(password);
 		vo.setStudentsPassword(password);
