@@ -70,4 +70,14 @@ public interface StudentsMapper {
 	 * comment : 특정 학생 수정
 	 */
 	public int updateStudents(StudentsVO vo);
+	
+	
+	/**
+	 * @param vo
+	 * @return
+	 * @author : Sangwon Hyun
+	 * @date : 2022. 5. 19.
+	 * comment : 학생이름으로 학생정보 조회
+	 */
+	public StudentsVO selectStudentsOne(StudentsVO vo);
 }
