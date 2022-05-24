@@ -3,6 +3,8 @@ package com.dw.board.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,8 +29,13 @@ public class StudentsRestController {
 		//중요한 정보를 서버에 전송할 때 post사용!
 		@CrossOrigin
 		@PostMapping("/login")
-		public boolean callIsLogin(@RequestBody StudentsVO vo) {
-			return studentsService.isStudents(vo);
+		public boolean callIsLogin(@RequestBody StudentsVO vo, HttpSession httpSession) {
+			boolean isLogin = studentsService.isStudents(vo);
+			if(isLogin){//로그인 성공했으면 session에 저장
+				//세션에 저장하는 방식은 key, value
+				httpSession.setAttribute("name", "hyunsangwon");
+			}
+			return isLogin;
 		}
 		
 		//학생 저장
@@ -47,7 +54,12 @@ public class StudentsRestController {
 		
 		//학생 조회 (Map으로 리턴해보기)
 		@GetMapping("/students/map")
-		public List<Map<String, Object>> callStudentsListByMap(){
+		public List<Map<String, Object>> callStudentsListByMap(HttpSession httpSession){
+			
+			String name = (String)httpSession.getAttribute("name");
+			if(name == null) {
+				return null;
+			}
 			return studentsService.getAllStudentsListByMap();
 		}
 		

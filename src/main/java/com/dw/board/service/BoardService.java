@@ -1,6 +1,7 @@
 package com.dw.board.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class BoardService {
 	}
 	
 	//게시판 전체 조회
-	public List<BoardVO> getAllBoardList(){
+	public List<Map<String, Object>> getAllBoardList(){
 		return boardMapper.selectAllBoardList();
 	}
 }
