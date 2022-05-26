@@ -56,10 +56,11 @@ public class StudentsRestController {
 		@GetMapping("/students/map")
 		public List<Map<String, Object>> callStudentsListByMap(HttpSession httpSession){
 			
-			String name = (String)httpSession.getAttribute("name");
-			if(name == null) {
-				return null;
-			}
+			//세션 데이터 가져오기 (추후 로직구현 예정)
+//			String name = (String)httpSession.getAttribute("name");
+//			if(name == null) {
+//				return null;
+//			}
 			return studentsService.getAllStudentsListByMap();
 		}
 		

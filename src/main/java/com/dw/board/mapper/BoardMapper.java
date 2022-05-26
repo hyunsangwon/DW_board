@@ -28,4 +28,11 @@ public interface BoardMapper {
 	 * comment : 전체 게시판 조회
 	 */
 	public List<Map<String, Object>> selectAllBoardList();
+	
+	public int updateBoard(BoardVO vo);
+	
+	public int deleteBoard(int boardId);
+	
+	public BoardVO selectBoardOne(int boardId);
+	
 }

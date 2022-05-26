@@ -20,3 +20,6 @@ CREATE TABLE IF NOT EXISTS board
     create_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '작성 날짜',
     CONSTRAINT board_students_id_fk FOREIGN KEY (students_id) REFERENCES students(students_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 컬럼 추가
+-- ALTER TABLE board ADD COLUMN cnt INTEGER(4) DEFAULT 0;

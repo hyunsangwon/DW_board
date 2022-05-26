@@ -36,4 +36,27 @@
 		ON b.students_id = s.students_id
 	</select>
 	
+	<update id="updateBoard">
+		UPDATE board
+		SET 
+			title = #{title},
+			content = #{content},
+			update_at= NOW()
+		WHERE board_id = #{boardId}
+	</update>
+	
+	<delete id="deleteBoard">
+		DELETE FROM board
+		WHERE board_id = #{boardId}
+	</delete>
+	
+	<select id="selectBoardOne" resultType="BoardVO">
+		SELECT
+			title,
+			content,
+			create_at
+		FROM board
+		WHERE board_id = #{boardId}
+	</select>
+	
 </mapper>
