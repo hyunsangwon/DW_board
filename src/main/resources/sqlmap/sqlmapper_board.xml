@@ -30,7 +30,8 @@
 			b.title,
 			b.content,
 			IFNULL(DATE_FORMAT(b.update_at,'%Y-%m-%d'),'-') AS updateAt,
-			DATE_FORMAT(b.create_at,'%Y-%m-%d') AS createAt
+			DATE_FORMAT(b.create_at,'%Y-%m-%d') AS createAt,
+			b.cnt
 		FROM board AS b
 		INNER JOIN students AS s
 		ON b.students_id = s.students_id
@@ -54,9 +55,35 @@
 		SELECT
 			title,
 			content,
-			create_at
+			create_at,
+			cnt
 		FROM board
 		WHERE board_id = #{boardId}
 	</select>
+	
+	<!-- 조회 수 업데이트 -->
+	<update id="updateBoardViews">
+		UPDATE board
+		SET 
+			cnt = #{cnt}
+		WHERE board_id = #{boardId}
+	</update>
+	
+	<select id="selectSearchBoardList" resultType="map">
+		SELECT
+			b.board_id AS boardId,
+			s.students_id AS studentsId,
+			s.students_name AS studentsName,
+			b.title,
+			b.content,
+			IFNULL(DATE_FORMAT(b.update_at,'%Y-%m-%d'),'-') AS updateAt,
+			DATE_FORMAT(b.create_at,'%Y-%m-%d') AS createAt,
+			b.cnt
+		FROM board AS b
+		INNER JOIN students AS s
+		ON b.students_id = s.students_id
+		WHERE s.students_name LIKE CONCAT('%',#{studentsName},'%')
+	</select>
+	
 	
 </mapper>

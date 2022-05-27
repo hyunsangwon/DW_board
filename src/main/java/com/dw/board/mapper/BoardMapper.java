@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.dw.board.vo.BoardVO;
 
@@ -34,5 +35,9 @@ public interface BoardMapper {
 	public int deleteBoard(int boardId);
 	
 	public BoardVO selectBoardOne(int boardId);
+	
+	public int updateBoardViews(BoardVO vo);
+	
+	public List<Map<String, Object>> selectSearchBoardList(String studentsName);
 	
 }

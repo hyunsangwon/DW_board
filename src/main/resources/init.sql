@@ -23,3 +23,10 @@ CREATE TABLE IF NOT EXISTS board
 
 -- 컬럼 추가
 -- ALTER TABLE board ADD COLUMN cnt INTEGER(4) DEFAULT 0;
+-- root 계정이 계정을 생성함
+-- '%' 모든 IP허용
+-- create user sangwon@'%' identified by '123';
+
+-- grant로 권한 부여
+-- on 데이터베이스이름.테이블이름 (dw.*)
+-- grant select,insert,update on dw.* to sangwon@'%';

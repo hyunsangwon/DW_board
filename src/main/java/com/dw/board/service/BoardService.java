@@ -40,4 +40,30 @@ public class BoardService {
 	public BoardVO getBoard(int boardId) {
 		return boardMapper.selectBoardOne(boardId);
 	}
+	
+	//게시풀 조회수 증가
+	public int getUpdateBoardView(int boardId) {
+		//1. 게시판 번호를 이용해서 조회 수 컬럼을 select
+		BoardVO vo = boardMapper.selectBoardOne(boardId);
+		int views = vo.getCnt();
+		++views; //2. 조회 수를 1증가 함.
+		vo.setCnt(views);
+		vo.setBoardId(boardId);
+		return boardMapper.updateBoardViews(vo); //3.조회 수 update
+	}
+	
+	//작성자가 작성한 게시물 조회
+	public List<Map<String, Object>> getSearchBoardList(String studentsName){
+		return boardMapper.selectSearchBoardList(studentsName);
+	}
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
 }
