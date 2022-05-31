@@ -40,4 +40,7 @@ public interface BoardMapper {
 	
 	public List<Map<String, Object>> selectSearchBoardList(String studentsName);
 	
+	
+	public Map<String, Object> selectBoardStatistics();
+	
 }

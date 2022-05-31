@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dw.board.service.BoardService;
 import com.dw.board.vo.BoardVO;
+import com.github.pagehelper.PageInfo;
 
 @RestController
 @RequestMapping("/api/v1") 
@@ -36,6 +37,9 @@ public class BoardRestController {
 	@CrossOrigin
 	@GetMapping("/board")
 	public List<Map<String, Object>> callBoardList(){
+		
+		
+		
 		return boardService.getAllBoardList();
 	}
 	
@@ -74,6 +78,11 @@ public class BoardRestController {
 		return boardService.getSearchBoardList(writer);
 	}
 	
-	
+	//게시판 통계 조회
+	@CrossOrigin
+	@GetMapping("/board/statistics")
+	public Map<String, Object> callBoardStatistics(){
+		return boardService.getBoardStatistics();
+	}
 	
 }

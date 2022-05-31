@@ -86,4 +86,27 @@
 	</select>
 	
 	
+	<select id="selectBoardStatistics" resultType="map">
+	select 
+		count(*) as studentsCnt,
+	(
+	select
+		count(*)
+	from board
+	) as boardCnt,
+	(select 
+		count(distinct(b.students_id))
+	from students as s
+	inner join board as b
+	on s.students_id = b.students_id
+	) as writerCnt,
+	(select 
+		sum(cnt)
+	from board
+	) as viewsCnt
+	from students 
+	</select>
+	
+	
+	
 </mapper>

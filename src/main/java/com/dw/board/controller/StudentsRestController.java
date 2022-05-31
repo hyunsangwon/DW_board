@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dw.board.service.StudentsService;
 import com.dw.board.vo.StudentsVO;
+import com.github.pagehelper.PageInfo;
 
 @RestController
 @RequestMapping("/api/v1") 
@@ -48,20 +49,23 @@ public class StudentsRestController {
 		
 		//학생조회 (VO로 리턴해보기)
 		@GetMapping("/students")
-		public List<StudentsVO> callStudentsList(){
-			return studentsService.getAllStudentsList();
-		}
-		
-		//학생 조회 (Map으로 리턴해보기)
-		@GetMapping("/students/map")
-		public List<Map<String, Object>> callStudentsListByMap(HttpSession httpSession){
-			
+		public List<StudentsVO> callStudentsList(HttpSession httpSession){
 			//세션 데이터 가져오기 (추후 로직구현 예정)
 //			String name = (String)httpSession.getAttribute("name");
 //			if(name == null) {
 //				return null;
 //			}
-			return studentsService.getAllStudentsListByMap();
+			return studentsService.getAllStudentsList();
+		}
+		
+		//학생 조회 (Map으로 리턴해보기)
+		@GetMapping("/students/map")
+		public PageInfo<Map<String, Object>> callStudentsListByMap(){
+			int pageNum = 1; //현재 페이지
+			int pageSize = 2; //한페이지에 게시물 몇개
+			List<Map<String, Object>> list = studentsService.getAllStudentsListByMap(pageNum, pageSize);
+			int navigatePages = 3; //한블록에 몇페이지
+			return new PageInfo<Map<String, Object>>(list, navigatePages);
 		}
 		
 		//특정 학생 조회(PK로 조회예정)

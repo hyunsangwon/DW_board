@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.dw.board.mapper.BoardMapper;
 import com.dw.board.vo.BoardVO;
+import com.github.pagehelper.PageHelper;
 
 @Service
 public class BoardService {
@@ -23,6 +24,9 @@ public class BoardService {
 	}
 	//게시판 전체 조회
 	public List<Map<String, Object>> getAllBoardList(){
+		int page = 1;
+		int pageSize = 10;
+		//PageHelper.startPage(page, pageSize);
 		return boardMapper.selectAllBoardList();
 	}
 	//게시물 수정
@@ -57,8 +61,10 @@ public class BoardService {
 		return boardMapper.selectSearchBoardList(studentsName);
 	}
 	
-	
-	
+	//학생 수, 게시글 수, 작성자 수, 총 조회 수 통계
+	public Map<String, Object> getBoardStatistics(){
+		return boardMapper.selectBoardStatistics();
+	}
 	
 	
 
