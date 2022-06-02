@@ -23,10 +23,9 @@ public class BoardService {
 		return boardMapper.insertBoard(vo);
 	}
 	//게시판 전체 조회
-	public List<Map<String, Object>> getAllBoardList(){
-		int page = 1;
-		int pageSize = 10;
-		//PageHelper.startPage(page, pageSize);
+	//pageNum : 현재 페이지, pageSize: 한 페이지에 게시물 몇개 보여줄지
+	public List<Map<String, Object>> getAllBoardList(int pageNum, int pageSize){
+		PageHelper.startPage(pageNum, pageSize);
 		return boardMapper.selectAllBoardList();
 	}
 	//게시물 수정

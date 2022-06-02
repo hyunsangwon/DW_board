@@ -36,11 +36,13 @@ public class BoardRestController {
 	//게시판 전체조회 (R)
 	@CrossOrigin
 	@GetMapping("/board")
-	public List<Map<String, Object>> callBoardList(){
+	//리턴타입을 List<Map<String, Object>> => PageInfo<Map<String, Object>>
+	public PageInfo<Map<String, Object>> callBoardList(@RequestParam("pageNum") int pageNum, 
+			@RequestParam("pageSize") int pageSize){
 		
+		List<Map<String, Object>> list = boardService.getAllBoardList(pageNum, pageSize);
 		
-		
-		return boardService.getAllBoardList();
+		return new PageInfo<Map<String, Object>>(list);
 	}
 	
 	//게시물 삭제 (D)	
