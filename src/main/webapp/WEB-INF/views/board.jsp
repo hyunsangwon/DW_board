@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="/resources/static/css/index.css">
 </head>
 <body>
+	<input id="h_studentsId" type="hidden" value="${studentsId}"/>
+	<input id="h_studentsName" type="hidden" value="${studentsName}"/>
 	<div class="container">
         <!-- 글 작성 팝업 -->
         <div class="write-popup">

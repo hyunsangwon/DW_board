@@ -31,11 +31,7 @@ public class StudentsRestController {
 		@CrossOrigin
 		@PostMapping("/login")
 		public boolean callIsLogin(@RequestBody StudentsVO vo, HttpSession httpSession) {
-			boolean isLogin = studentsService.isStudents(vo);
-			if(isLogin){//로그인 성공했으면 session에 저장
-				//세션에 저장하는 방식은 key, value
-				httpSession.setAttribute("name", "hyunsangwon");
-			}
+			boolean isLogin = studentsService.isStudents(vo, httpSession);
 			return isLogin;
 		}
 		
@@ -50,11 +46,6 @@ public class StudentsRestController {
 		//학생조회 (VO로 리턴해보기)
 		@GetMapping("/students")
 		public List<StudentsVO> callStudentsList(HttpSession httpSession){
-			//세션 데이터 가져오기 (추후 로직구현 예정)
-//			String name = (String)httpSession.getAttribute("name");
-//			if(name == null) {
-//				return null;
-//			}
 			return studentsService.getAllStudentsList();
 		}
 		
