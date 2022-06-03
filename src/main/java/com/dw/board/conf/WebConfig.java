@@ -15,7 +15,8 @@ public class WebConfig implements WebMvcConfigurer{
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(interceptor);//우리가 만든 interceptor를 스프링에 등록
+		//우리가 만든 interceptor를 스프링에 등록
+		registry.addInterceptor(interceptor).excludePathPatterns("/api/v1/logs");
 	}
 	
 

@@ -1,6 +1,16 @@
 -- CREATE database IF NOT EXISTS dw DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 -- USE dw;
 
+-- 컬럼 추가
+-- ALTER TABLE board ADD COLUMN cnt INTEGER(4) DEFAULT 0;
+-- root 계정이 계정을 생성함
+-- '%' 모든 IP허용
+-- create user sangwon@'%' identified by '123';
+
+-- grant로 권한 부여
+-- on 데이터베이스이름.테이블이름 (dw.*)
+-- grant select,insert,update on dw.* to sangwon@'%';
+
 -- 학생 테이블
 CREATE TABLE IF NOT EXISTS students(
     students_id INTEGER(4) AUTO_INCREMENT NOT NULL PRIMARY KEY COMMENT '학생 아이디',
@@ -21,12 +31,14 @@ CREATE TABLE IF NOT EXISTS board
     CONSTRAINT board_students_id_fk FOREIGN KEY (students_id) REFERENCES students(students_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- 컬럼 추가
--- ALTER TABLE board ADD COLUMN cnt INTEGER(4) DEFAULT 0;
--- root 계정이 계정을 생성함
--- '%' 모든 IP허용
--- create user sangwon@'%' identified by '123';
-
--- grant로 권한 부여
--- on 데이터베이스이름.테이블이름 (dw.*)
--- grant select,insert,update on dw.* to sangwon@'%';
+-- 접속이력 테이블
+CREATE TABLE IF NOT EXISTS board_logs
+(
+	log_id BIGINT(20) AUTO_INCREMENT NOT NULL PRIMARY KEY COMMENT '로그 아이디',
+	ip VARCHAR(50) COMMENT '아이피',
+	latitude VARCHAR(20) COMMENT '위도',
+	longitude VARCHAR(20) COMMENT '경도',
+	url VARCHAR(100) COMMENT '요청 url',
+	http_method VARCHAR(10) COMMENT 'http method',
+	create_at DATETIME COMMENT '접속 시간'
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

@@ -11,7 +11,7 @@ mybatis:
 #MySQL 접속정보 설정
 spring:
    datasource:
-      initialization-mode: NEVER
+      initialization-mode: always
       schema: classpath:init.sql
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://localhost:3306/dw?useUnicode=true&charaterEncoding=utf-8&serverTimezone=UTC
