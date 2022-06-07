@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS board
     content VARCHAR(100) COMMENT '글 내용',
     update_at DATETIME COMMENT '수정 날짜',
     create_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '작성 날짜',
-    CONSTRAINT board_students_id_fk FOREIGN KEY (students_id) REFERENCES students(students_id)
+    CONSTRAINT board_students_id_fk FOREIGN KEY (students_id) REFERENCES students(students_id) ON DELETE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- 접속이력 테이블

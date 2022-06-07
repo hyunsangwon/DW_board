@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="/resources/static/css/index.css">
 </head>
 <body>
-	<input id="h_studentsId" type="hidden" value="${studentsId}"/>
-	<input id="h_studentsName" type="hidden" value="${studentsName}"/>
+	<%-- <input id="h_studentsId" type="hidden" value="${studentsId}"/>
+	<input id="h_studentsName" type="hidden" value="${studentsName}"/> --%>
 	<div class="container">
         <!-- 글 작성 팝업 -->
         <div class="write-popup">
@@ -189,7 +189,16 @@
                  	<c:forEach begin="${pageHandler.navigateFirstPage}" end="${pageHandler.navigateLastPage}" var="pageNum" >
 						<a onclick="getBoardList(${pageNum},10)" id="pageNum${pageNum}">${pageNum}</a>
 					</c:forEach>
+					<!-- bool 비교 -->
                  	<c:if test="${pageHandler.hasNextPage}">
+                 		<a href="#">Next</a>
+                 	</c:if>
+                 	<!-- 숫자 비교 -->
+                 	<c:if test="${son == 7}">
+                 		<a href="#">Next</a>
+                 	</c:if>
+                 	<!-- 문자 비교 -->
+                 	<c:if test="${name.equals('손흥민')}">
                  		<a href="#">Next</a>
                  	</c:if>
 					<input id="nowPageNum" type="hidden" value="${pageHandler.pageNum}">

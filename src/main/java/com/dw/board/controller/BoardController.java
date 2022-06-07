@@ -33,11 +33,13 @@ public class BoardController {
 		
 		List<Map<String, Object>> list = boardService.getAllBoardList(pageNum, pageSize);
 		model.addAttribute("pageHandler", new PageInfo<Map<String, Object>>(list));
+		model.addAttribute("son",7);
+		model.addAttribute("name","손흥민");
 		//세션 데이터 가져오기 (추후 로직구현 예정)
-		int studentsId = (int) httpSession.getAttribute("studentsId");
-		String studentsName = (String) httpSession.getAttribute("studentsName");
-		model.addAttribute("studentsId", studentsId);
-		model.addAttribute("studentsName", studentsName);
+//		int studentsId = (int) httpSession.getAttribute("studentsId");
+//		String studentsName = (String) httpSession.getAttribute("studentsName");
+//		model.addAttribute("studentsId", studentsId);
+//		model.addAttribute("studentsName", studentsName);
 		return "board";
 	}
 		
