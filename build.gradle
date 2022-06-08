@@ -35,6 +35,9 @@ dependencies {
 	implementation 'org.springframework.session:spring-session-core'
 	//PageHanlder
 	implementation group: 'com.github.pagehelper', name: 'pagehelper-spring-boot-starter', version: '1.4.2'
+	//POI
+	implementation group: 'org.apache.poi', name: 'poi', version: '5.0.0'
+	implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.0.0'
 }
 
 tasks.named('test') {

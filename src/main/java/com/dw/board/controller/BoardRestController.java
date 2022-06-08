@@ -74,10 +74,15 @@ public class BoardRestController {
 	}
 	
 	//쿼리 스트링으로 검색한 작성자 게시판 리스트 조회
+	//리턴타입을 페이징 처리했던 컨트롤러 메소드와 동일하게
 	@CrossOrigin
 	@GetMapping("/board/search")
-	public List<Map<String, Object>> callBoardSearch(@RequestParam("writer") String writer){
-		return boardService.getSearchBoardList(writer);
+	public PageInfo<Map<String, Object>> callBoardSearch(@RequestParam("writer") String writer,
+			@RequestParam("pageNum") int pageNum, 
+			@RequestParam("pageSize") int pageSize){
+		
+		List<Map<String, Object>> list = boardService.getSearchBoardList(writer, pageNum, pageSize);
+		return new PageInfo<Map<String, Object>>(list);
 	}
 	
 	//게시판 통계 조회
