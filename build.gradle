@@ -2,10 +2,17 @@ plugins {
 	id 'org.springframework.boot' version '2.6.7'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'war'
+}
+
+bootWar {
+	archiveBaseName= 'board'
+	archiveFileName= 'board.war'
+	archiveVersion= '0.0.1'
 }
 
 group = 'com.dw'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 sourceCompatibility = '11'
 
 configurations {
@@ -38,6 +45,8 @@ dependencies {
 	//POI
 	implementation group: 'org.apache.poi', name: 'poi', version: '5.0.0'
 	implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.0.0'
+
+	
 }
 
 tasks.named('test') {
