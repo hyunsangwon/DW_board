@@ -62,19 +62,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/board?pageNum=1&pageSize=10">
                         <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                         <span class="title">Dashboard</span>                
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/students">
                         <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
                         <span class="title">Students</span>                
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/logs">
                         <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
                         <span class="title">logs</span>                
                     </a>
@@ -234,7 +234,7 @@
 <script>
 	getPageNum();//페이지 번호 알아내는 함수 호출
 	getBoardStatistics(); //통계 함수 호출
-	
+
 	function getBoardStatistics(){
         $.ajax({
             url: '/api/v1/board/statistics',
@@ -375,6 +375,17 @@
                      }
                  }
              }); 	
+        }
+    });
+      
+    $('#searchBar').keyup(function(key){
+        var pageSize = 10;
+        var pageNum = 1;
+        if(key.keyCode == 13){
+            var search = $('#searchBar').val().trim();//input에 작성한 작성자를 가져옴
+           	if(search != ''){
+           		location.href="/board/search?writer="+search+"&pageNum="+pageNum+"&pageSize="+pageSize;
+           	}
         }
     });
 </script>

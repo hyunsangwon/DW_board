@@ -34,13 +34,17 @@ public class BoardController {
 		return "board";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
+	@GetMapping("/board/search")
+	public String callBoardSearchPage(ModelMap map,
+			@RequestParam("writer") String writer,
+			@RequestParam("pageNum") int pageNum,
+			@RequestParam("pageSize") int pageSize){
+		List<Map<String, Object>> list = boardService.getSearchBoardList(writer, pageNum, pageSize);
+		PageInfo<Map<String, Object>> pageInfo = new PageInfo<Map<String, Object>>(list);
+		map.addAttribute("pageHelper", pageInfo);
+		return "board";
+	}
+
 //	@Autowired
 //	private BoardService boardService;
 	//http://localhost:8080/board?pageNum=1&pageSize=10
