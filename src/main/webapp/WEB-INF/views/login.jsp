@@ -8,7 +8,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/resources/static/css/style.css">
+    <link rel="stylesheet" href="/resources/static/css/login.css">
     <title>게시판 로그인</title>
   </head>
   <body>
@@ -24,7 +24,7 @@
           <label>비밀번호</label>
         </div>
         <input id="loginBtn" class="login-btn" type="butten" value="로그인"/>
-        <div class="signup-link">회원이 아닌가요? <a href="join.html">회원가입</a></div>
+        <div class="signup-link">회원이 아닌가요? <a href="/join">회원가입</a></div>
       </div>
     </div>
     <script
