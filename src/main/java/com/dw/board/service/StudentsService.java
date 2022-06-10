@@ -57,6 +57,9 @@ public class StudentsService {
 	@Transactional(rollbackFor = Exception.class)
 	public int getUpdateStudents(StudentsVO vo, int studentsId) {
 		vo.setStudentsId(studentsId);
+		String password = vo.getStudentsPassword();
+		password = passwordEncoder.encode(password);
+		vo.setStudentsPassword(password);
 		return studentsMapper.updateStudents(vo);
 	}
 	
