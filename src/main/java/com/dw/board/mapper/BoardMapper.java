@@ -30,6 +30,9 @@ public interface BoardMapper {
 	 */
 	public List<Map<String, Object>> selectAllBoardList();
 	
+	public List<Map<String, Object>> selectAllBoardListTest
+	(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+	
 	public int updateBoard(BoardVO vo);
 	
 	public int deleteBoard(int boardId);
@@ -40,7 +43,7 @@ public interface BoardMapper {
 	
 	public List<Map<String, Object>> selectSearchBoardList(String studentsName);
 	
-	
 	public Map<String, Object> selectBoardStatistics();
 	
+	public int selectAllBoardTotal();
 }

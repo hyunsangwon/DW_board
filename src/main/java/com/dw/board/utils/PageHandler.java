@@ -21,7 +21,6 @@ public class PageHandler {
 	private int lastBlock; //마지막 블록
 	private int navigatePages; //블록에 페이지 몇개 표시할지 (ex 1블록 : 1,2,3,4,5)
 
-	
 	/**
 	 * @return int
 	 * @author : Sangwon Hyun

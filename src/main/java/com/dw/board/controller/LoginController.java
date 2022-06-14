@@ -1,5 +1,7 @@
 package com.dw.board.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -14,6 +16,14 @@ public class LoginController {
 	@GetMapping("/join")
 	public String callJoinPage() {
 		return "join";
+	}
+	
+	@GetMapping("/logout")
+	public String callLoginout(HttpSession httpSession) {
+		//세션 remove
+		httpSession.removeAttribute("studentsId");
+		httpSession.removeAttribute("studentsName");
+		return "login";
 	}
 	
 }

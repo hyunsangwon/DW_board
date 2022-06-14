@@ -3,6 +3,8 @@ package com.dw.board.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,11 +28,16 @@ public class BoardController {
 	@GetMapping("/board")
 	public String callBoardPage(ModelMap map,
 			@RequestParam("pageNum") int pageNum,
-			@RequestParam("pageSize") int pageSize){
+			@RequestParam("pageSize") int pageSize,
+			HttpSession session){
 		List<Map<String, Object>> list = boardService.getAllBoardList(pageNum, pageSize);
 		
 		PageInfo<Map<String, Object>> pageInfo = new PageInfo<Map<String, Object>>(list);
 		map.addAttribute("pageHelper", pageInfo);
+		
+		int studentsId = (int) session.getAttribute("studentsId");
+		map.addAttribute("studentsId", studentsId);
+		
 		return "board";
 	}
 	
@@ -38,31 +45,16 @@ public class BoardController {
 	public String callBoardSearchPage(ModelMap map,
 			@RequestParam("writer") String writer,
 			@RequestParam("pageNum") int pageNum,
-			@RequestParam("pageSize") int pageSize){
+			@RequestParam("pageSize") int pageSize,
+			HttpSession session){
+		
 		List<Map<String, Object>> list = boardService.getSearchBoardList(writer, pageNum, pageSize);
 		PageInfo<Map<String, Object>> pageInfo = new PageInfo<Map<String, Object>>(list);
 		map.addAttribute("pageHelper", pageInfo);
+		
+		int studentsId = (int) session.getAttribute("studentsId");
+		map.addAttribute("studentsId", studentsId);
+		
 		return "board";
 	}
-
-//	@Autowired
-//	private BoardService boardService;
-	//http://localhost:8080/board?pageNum=1&pageSize=10
-//	@GetMapping("/board")
-//	public String callBoardPage(ModelMap model,HttpSession httpSession,
-//			@RequestParam("pageNum") int pageNum, 
-//			@RequestParam("pageSize") int pageSize) {
-//		
-//		List<Map<String, Object>> list = boardService.getAllBoardList(pageNum, pageSize);
-//		model.addAttribute("pageHandler", new PageInfo<Map<String, Object>>(list));
-//		model.addAttribute("son",7);
-//		model.addAttribute("name","손흥민");
-//		//세션 데이터 가져오기 (추후 로직구현 예정)
-//		int studentsId = (int) httpSession.getAttribute("studentsId");
-//		String studentsName = (String) httpSession.getAttribute("studentsName");
-//		model.addAttribute("studentsId", studentsId);
-//		model.addAttribute("studentsName", studentsName);
-//		return "board";
-//	}
-		
 }
