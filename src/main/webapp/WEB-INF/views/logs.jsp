@@ -145,7 +145,7 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f283c9704c76d19621ebd286c77b5d5a"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=26aa91ac2ea5fa5f3d52c4a2dbf8cc29"></script>
 <script>
     let list = document.querySelectorAll('.navigation li');
     function activeLink(){
