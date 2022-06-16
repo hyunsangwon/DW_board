@@ -3,6 +3,11 @@ package com.dw.board.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -67,7 +72,35 @@ public class BoardService {
 	}
 	
 	
-
+	public Workbook makeExcelForm()throws Exception{
+		
+		Workbook workbook = new HSSFWorkbook();
+		Sheet sheet = workbook.createSheet("DW 게시판"); //시트 생성
+		Row row = null; //엑셀 행
+		Cell cell = null;//엑셀 열
+		int rowNumber = 0; // 열 변호
+		
+		row = sheet.createRow(rowNumber++);
+		cell = row.createCell(0);
+		cell.setCellValue("게시판 번호");
+		
+		cell = row.createCell(1);
+        cell.setCellValue("작성자");
+        
+        cell = row.createCell(2);
+        cell.setCellValue("제목");
+		
+        cell = row.createCell(3);
+        cell.setCellValue("수정 날짜");
+    
+        cell = row.createCell(4);
+        cell.setCellValue("작성 날짜");
+        
+        cell = row.createCell(5);
+        cell.setCellValue("조회 수");
+        
+		return workbook;
+	}
 	
 	
 	
