@@ -24,6 +24,8 @@ public class ExcelController {
 	@Autowired
 	private ExcelService excelService;
 	
+	//엑셀, 사진, 한글 PDF, Zip, 영상 등등.. return type이 void or ResponseEntity
+	//페이지 이름으로 return (X)
 	@GetMapping("/excel")
 	public void downloadExcelFile(HttpServletResponse response) throws Exception{
 		
