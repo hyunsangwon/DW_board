@@ -2,14 +2,49 @@
 application:
    version: v0.0.1
    title: HYUNSANGWON
+## 포트 수정
+server:
+   port: 8080
+   
+#개발 버전 설정
+spring:
+   profiles:
+      active: dev
 
 #MyBatis 설정
 mybatis:
    mapper-locations: classpath:/sqlmap/sqlmapper_*.xml
    type-aliases-package: com.dw.board.vo
+
+#페이징 처리      
+pagehelper:
+   #helper-dialect: 사용할 데이터베이스
+   helper-dialect: mysql
+   #reasonable : 0페이지 요청이들어오면 자동으로 1페이지로, 13페이지 까지 있는데 14페이지 요청이 들어오면 자동으로 13페이지로 변환.    
+   reasonable: true
    
 #MySQL 접속정보 설정
+---
 spring:
+   profiles: env
+   datasource:
+      initialization-mode: always
+      schema: classpath:init.sql
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://sangwon-database.csnd3edwjp9u.ap-northeast-2.rds.amazonaws.com:3306/dw?useUnicode=true&charaterEncoding=utf-8&serverTimezone=UTC
+      username: admin
+      password: tkddnjs0823
+   #JSP 경로 설정
+   mvc:
+      view:
+         prefix: /WEB-INF/views/
+         suffix: .jsp
+      #css,js,image 폴더 위치 설정
+      static-path-pattern: /resources/static/**
+      
+---
+spring:
+   profiles: dev
    datasource:
       initialization-mode: always
       schema: classpath:init.sql
@@ -25,10 +60,7 @@ spring:
       #css,js,image 폴더 위치 설정
       static-path-pattern: /resources/static/**
       
-pagehelper:
-   #helper-dialect: 사용할 데이터베이스
-   helper-dialect: mysql
-   #reasonable : 0페이지 요청이들어오면 자동으로 1페이지로, 13페이지 까지 있는데 14페이지 요청이 들어오면 자동으로 13페이지로 변환.    
-   reasonable: true
+  
+
       
       

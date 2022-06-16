@@ -58,8 +58,11 @@ public class Interceptor implements HandlerInterceptor{
 		//세션 체크
 		HttpSession session = request.getSession();
 		if(session.getAttribute("studentsId") == null) {
+			logger.info("session studentsId: "+session.getAttribute("studentsId"));
 			response.sendRedirect("/login");//세션에 값이 없으면 /login 경로로 redirect!
+			return false;
 		}
+		
 		return true;
 	}
 	
