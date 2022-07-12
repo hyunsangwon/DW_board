@@ -46,7 +46,7 @@ spring:
 spring:
    profiles: dev
    datasource:
-      initialization-mode: always
+      initialization-mode: never
       schema: classpath:init.sql
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://localhost:3306/dw?useUnicode=true&charaterEncoding=utf-8&serverTimezone=UTC

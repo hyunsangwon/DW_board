@@ -5,10 +5,10 @@ plugins {
 	id 'war'
 }
 
-bootWar {
+bootWar{
 	archiveBaseName= 'board'
 	archiveFileName= 'board.war'
-	archiveVersion= '0.0.1'
+	archiveVersion= '0.0.1' 
 }
 
 group = 'com.dw'
@@ -26,6 +26,8 @@ repositories {
 }
 
 dependencies {
+	//deploy
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
 	compileOnly 'org.projectlombok:lombok'

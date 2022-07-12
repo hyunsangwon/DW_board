@@ -162,7 +162,7 @@
     function getPopup(logId){
         $('.logs-popup').css('display', 'block');
         $.ajax({
-            url: 'http://localhost:8080/api/v1/logs/logId/'+logId,
+            url: '/api/v1/logs/logId/'+logId,
             type : 'GET',
             dataType: 'json',
             success: function (response) {
@@ -196,7 +196,7 @@
     getLogsList(1, 10);
     function getLogsList(pageNum, pageSize){
         $.ajax({
-            url: 'http://localhost:8080/api/v1/logs?pageNum='+pageNum+'&pageSize='+pageSize,
+            url: '/api/v1/logs?pageNum='+pageNum+'&pageSize='+pageSize,
             type : 'GET',
             dataType: 'json',
             success: function (response) {
